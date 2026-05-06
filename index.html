@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Abdullah Adnan — Software Engineer</title>
+  <meta name="description" content="Portfolio of Muhammad Abdullah Adnan — Software Engineering undergraduate specialising in full-stack development, software architecture, and system design.">
+  <meta name="author" content="Muhammad Abdullah Adnan">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ═══════════ NAVIGATION ═══════════ -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="#hero" class="nav-logo">&lt;AA /&gt;</a>
+
+      <ul class="nav-links">
+        <li><a href="#hero">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#connect">Connect</a></li>
+      </ul>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════ HERO / ABOUT ═══════════ -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-label"><span class="dot"></span> Open to Opportunities</p>
+          <h1 class="hero-name">
+            Hi, I'm <span class="gradient-text">Abdullah Adnan</span>
+          </h1>
+          <p class="hero-role">Software Engineering Undergraduate</p>
+          <p class="hero-pitch">
+            I architect and build end-to-end systems — from low-level OS
+            primitives to polished full-stack applications. I've navigated
+            oceans with graph algorithms in C++, built smart transit platforms
+            in Java with layered architecture, and engineered disaster
+            management systems with React &amp; Spring Boot. I don't just
+            write code — I design systems that scale, grounded in GRASP
+            patterns, GoF design patterns, and proven architectural
+            blueprints.
+          </p>
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-code"></i> View Projects
+            </a>
+            <a href="#connect" class="btn btn-outline">
+              <i class="fa-solid fa-paper-plane"></i> Get in Touch
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <div class="profile-frame">
+            <img src="profile.png" alt="Muhammad Abdullah Adnan" id="profile-pic">
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint">
+        <span>SCROLL</span>
+        <div class="arrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROJECTS ═══════════ -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title reveal"><span class="gradient-text">Projects</span></h2>
+      <p class="section-subtitle reveal">
+        A selection of things I've built — from algorithmic deep dives to
+        full-stack production systems.
+      </p>
+      <div class="projects-grid" id="projects-grid">
+        <!-- Dynamically rendered from projects.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SKILLS ═══════════ -->
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title reveal"><span class="gradient-text">Skills &amp; Stack</span></h2>
+      <p class="section-subtitle reveal">
+        Languages, frameworks, and concepts I work with on a daily basis.
+      </p>
+
+      <!-- Languages -->
+      <div class="skills-category reveal">
+        <h3 class="skills-category-title">Languages</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <i class="devicon-java-plain"></i>
+            <span>Java</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-cplusplus-plain"></i>
+            <span>C++</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-c-plain"></i>
+            <span>C</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-csharp-plain"></i>
+            <span>C#</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-python-plain"></i>
+            <span>Python</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-javascript-plain"></i>
+            <span>JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Frameworks & Libraries -->
+      <div class="skills-category reveal">
+        <h3 class="skills-category-title">Frameworks &amp; Libraries</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <i class="devicon-spring-original"></i>
+            <span>Spring Boot</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-react-original"></i>
+            <span>React</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-dot-net-plain"></i>
+            <span>.NET</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-flask-original"></i>
+            <span>Flask</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-java-plain"></i>
+            <span>JavaFX</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-cplusplus-plain"></i>
+            <span>SFML</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Databases & Tools -->
+      <div class="skills-category reveal">
+        <h3 class="skills-category-title">Databases &amp; Tools</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <i class="devicon-microsoftsqlserver-plain"></i>
+            <span>SQL Server</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-git-plain"></i>
+            <span>Git</span>
+          </div>
+          <div class="skill-card">
+            <i class="devicon-github-original"></i>
+            <span>GitHub</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Architecture & Concepts -->
+      <div class="skills-category reveal">
+        <h3 class="skills-category-title">Architecture &amp; Design</h3>
+        <div class="concept-grid">
+          <span class="concept-badge">MVC</span>
+          <span class="concept-badge">MVVM</span>
+          <span class="concept-badge">Layered Architecture</span>
+          <span class="concept-badge">Client-Server</span>
+          <span class="concept-badge">Repository Pattern</span>
+          <span class="concept-badge">GRASP Patterns</span>
+          <span class="concept-badge">GoF Design Patterns</span>
+          <span class="concept-badge">User Stories &amp; Use Cases</span>
+          <span class="concept-badge">Sequence Diagrams</span>
+          <span class="concept-badge">System Sequence Diagrams</span>
+        </div>
+      </div>
+
+      <!-- OS Concepts -->
+      <div class="skills-category reveal">
+        <h3 class="skills-category-title">OS &amp; Systems</h3>
+        <div class="concept-grid">
+          <span class="concept-badge">Mutexes</span>
+          <span class="concept-badge">Semaphores</span>
+          <span class="concept-badge">Pipes</span>
+          <span class="concept-badge">Forks</span>
+          <span class="concept-badge">Process Synchronization</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONNECT ═══════════ -->
+  <section id="connect">
+    <div class="container">
+      <h2 class="section-title reveal"><span class="gradient-text">Let's Connect</span></h2>
+      <p class="section-subtitle reveal" style="margin-left:auto;margin-right:auto;">
+        Got a project idea or just want to say hi? Reach out through any of these channels.
+      </p>
+
+      <div class="connect-cards">
+        <!-- Email -->
+        <a href="mailto:chabdullah3506@gmail.com" class="connect-card reveal">
+          <div class="connect-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <span class="connect-label">Email</span>
+          <span class="connect-value">chabdullah3506@gmail.com</span>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/abdullah-adnan-660bb1350/" target="_blank" rel="noopener" class="connect-card reveal" style="transition-delay:.1s">
+          <div class="connect-icon">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </div>
+          <span class="connect-label">LinkedIn</span>
+          <span class="connect-value">Abdullah Adnan</span>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/Abdullah-SE-bit" target="_blank" rel="noopener" class="connect-card reveal" style="transition-delay:.2s">
+          <div class="connect-icon">
+            <i class="fa-brands fa-github"></i>
+          </div>
+          <span class="connect-label">GitHub</span>
+          <span class="connect-value">Abdullah-SE-bit</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Muhammad Abdullah Adnan. Built from scratch.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="projects.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

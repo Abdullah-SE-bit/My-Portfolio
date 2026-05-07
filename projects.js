@@ -146,4 +146,37 @@ const PROJECTS = [
       "Disaster Response",
     ],
   },
+
+  // ── 4 ─────────────────────────────────────────────────────────
+  {
+    title:       "FLAKE",
+    subtitle:    "Student Portal — Python Flask & SQLite",
+    description:
+      "A comprehensive student portal built with Python Flask on the " +
+      "back-end and HTML / CSS / JavaScript on the front-end, backed " +
+      "by a seeded SQLite database. The system supports two roles — " +
+      "Admin and Student — and mirrors Google Classroom functionality " +
+      "with modules for marks entry & viewing, attendance tracking, " +
+      "class management, and a full financial module for fee records " +
+      "and payment history.",
+    techStack: [
+      { name: "Python",      icon: "devicon-python-plain" },
+      { name: "Flask",       icon: "devicon-flask-original" },
+      { name: "JavaScript",  icon: "devicon-javascript-plain" },
+      { name: "SQLite",      icon: "devicon-sqlite-plain" },
+      { name: "HTML / CSS",  icon: "devicon-html5-plain" },
+    ],
+    images:     [],
+    video:       null,
+    github:      "https://github.com/Abdullah-SE-bit",
+    live:        null,
+    highlights: [
+      "Admin & Student Roles",
+      "Marks Management",
+      "Attendance Tracking",
+      "Financial Module",
+      "Google Classroom Features",
+      "Seeded Database",
+    ],
+  },
 ];

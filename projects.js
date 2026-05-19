@@ -46,7 +46,10 @@
   {
     title:       "Project Name",
     subtitle:    "A short one-liner",
-    description: "Longer description of what the project does …",
+    bullets: [
+      "Impact-focused point 1",
+      "Impact-focused point 2",
+    ],
     techStack: [
       { name: "Java",      icon: "devicon-java-plain" },
       { name: "Custom",    icon: null },            // shows text badge
@@ -65,12 +68,12 @@ const PROJECTS = [
   {
     title:       "Ocean Route Navigation",
     subtitle:    "Maritime Navigation System — C++ & SFML",
-    description:
-      "A maritime navigation application that finds optimal sea routes " +
-      "using advanced graph algorithms. Built entirely in C++ with SFML " +
-      "for real-time visualization, it implements core data structures — " +
-      "graphs, trees, linked lists, queues — and pathfinding algorithms " +
-      "including BFS, DFS, Dijkstra, and A*.",
+    bullets: [
+      "Developed a maritime route navigation system in C++ with SFML, rendering a real-world world map with actual global ports and real maritime routes loaded from a file-based database",
+      "Modeled the port network as a weighted graph and implemented BFS, Dijkstra, and A* algorithms for optimal pathfinding using real-world cost and distance data",
+      "Used queues to simulate port docking sequences and linked lists to represent multi-port voyage paths across the network",
+      "Built a real-time ship movement simulation in SFML displaying vessels traversing computed routes across the rendered world map",
+    ],
     techStack: [
       { name: "C++",   icon: "devicon-cplusplus-plain" },
       { name: "SFML",  icon: null },
@@ -93,12 +96,12 @@ const PROJECTS = [
   {
     title:       "BOGO — Smart Transit Platform",
     subtitle:    "Public Bus Transport System — Java & JavaFX",
-    description:
-      "A smart public-bus transport system inspired by Ocean Route Nav " +
-      "but scaled up with a full database backend and proper software " +
-      "architecture. Features real-time route simulation, admin panels, " +
-      "driver & passenger dashboards — all built with GRASP and GoF " +
-      "design patterns on a layered architecture.",
+    bullets: [
+      "Built a desktop public bus transport navigation app addressing the absence of any digital transit guide, eliminating commuter dependence on word-of-mouth and in-bus maps for route discovery",
+      "Implemented strict 5-layer architecture (UI -> Controller -> Service -> Domain -> Repository) following GRASP and GoF design patterns with JDBC and MS SQL for persistence",
+      "Developed DSA-driven map construction and pathfinding modules enabling real-time route and stop lookup across the bus network",
+      "Designed role-based access for Admins (add, remove, deactivate stops; manage drivers and routes) and Drivers (view daily assigned route, log operational issues), with all activity fully logged through the portal",
+    ],
     techStack: [
       { name: "Java",           icon: "devicon-java-plain" },
       { name: "JavaFX",         icon: null },
@@ -122,12 +125,12 @@ const PROJECTS = [
   {
     title:       "SDR_MIS",
     subtitle:    "Disaster Management Information System",
-    description:
-      "A full-stack Disaster Management Information System with a React " +
-      "front-end and Spring Boot back-end, backed by MS SQL Server. " +
-      "This is a database-heavy project that leverages advanced SQL " +
-      "Server features and follows a layered architecture to manage " +
-      "disaster response services at scale.",
+    bullets: [
+      "Engineered a full-stack enterprise disaster response MIS with a Spring Boot 3.2 REST API and a React 18 SPA, covering emergency reporting, resource logistics, rescue team deployment, hospital coordination, and financial tracking",
+      "Implemented JWT-based stateless authentication with role-based access control (RBAC) across 5 roles using Spring Security and @PreAuthorize method-level authorization",
+      "Designed a 13-table relational schema on MS SQL Server with database-level triggers for inventory and team status automation, views for role-scoped data abstraction, and composite indexes for query performance optimization",
+      "Built approval-based workflows for resource allocation, team dispatch, and financial transactions enforcing ACID properties with rollback support, and exposed 10+ RESTful controller modules documented via Swagger UI",
+    ],
     techStack: [
       { name: "React",          icon: "devicon-react-original" },
       { name: "Spring Boot",    icon: "devicon-spring-original" },
@@ -151,14 +154,12 @@ const PROJECTS = [
   {
     title:       "FLAKE",
     subtitle:    "Student Portal — Python Flask & SQLite",
-    description:
-      "A comprehensive student portal built with Python Flask on the " +
-      "back-end and HTML / CSS / JavaScript on the front-end, backed " +
-      "by a seeded SQLite database. The system supports two roles — " +
-      "Admin and Student — and mirrors Google Classroom functionality " +
-      "with modules for marks entry & viewing, attendance tracking, " +
-      "class management, and a full financial module for fee records " +
-      "and payment history.",
+    bullets: [
+      "Built a unified university portal consolidating attendance tracking, grade viewing, course registration, timetable management, and Google Classroom-style academic workflows into a single authenticated platform",
+      "Implemented role-based access for Students, Teachers, and Admins with session-based authentication, covering distinct feature sets per role including marking attendance, uploading materials, editing timetables, and managing faculty records",
+      "Developed an in-built mail system enabling direct communication between students, teaching assistants, teachers, and admins, replacing fragmented external channels",
+      "Automated semester-based classroom enrollment and course registration, reducing student dependence on multiple disconnected university systems",
+    ],
     techStack: [
       { name: "Python",      icon: "devicon-python-plain" },
       { name: "Flask",       icon: "devicon-flask-original" },

@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initScrollReveal();
   initGalleries();
+  initTilt();
+  initHeroParallax();
+  initStarfield();
 });
 
 /* ── Render Projects from projects.js ──────────────────── */
@@ -60,13 +63,19 @@ function renderProjects() {
     if (p.github) linksHTML += `<a href="${p.github}" target="_blank" rel="noopener" class="project-link"><i class="fa-brands fa-github"></i> Code</a>`;
     if (p.live)   linksHTML += `<a href="${p.live}" target="_blank" rel="noopener" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>`;
 
+    const descriptionHTML = Array.isArray(p.bullets) && p.bullets.length > 0
+      ? `<ul class="project-desc">${p.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`
+      : p.description
+        ? `<p class="project-desc">${p.description}</p>`
+        : '';
+
     return `
       <article class="project-card reveal" style="transition-delay: ${idx * 0.1}s">
         ${mediaHTML}
         <div class="project-body">
           <h3 class="project-title">${p.title}</h3>
           <p class="project-subtitle">${p.subtitle}</p>
-          <p class="project-desc">${p.description}</p>
+          ${descriptionHTML}
           <div class="project-stack">${stackHTML}</div>
           <div class="project-highlights">${highlightsHTML}</div>
           <div class="project-links">${linksHTML}</div>
@@ -91,6 +100,195 @@ function initGalleries() {
       );
     });
   });
+}
+
+/* ── 3D tilt interaction (CSS variable driven) ─────────── */
+function initTilt() {
+  const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!supportsHover) return;
+
+  const targets = document.querySelectorAll(
+    '.project-card, .skill-card, .connect-card, .concept-badge'
+  );
+
+  targets.forEach(card => {
+    let rect = null;
+    let frameId = null;
+
+    const updateTilt = (event) => {
+      if (!rect) rect = card.getBoundingClientRect();
+
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const pctX = (x / rect.width) - 0.5;
+      const pctY = (y / rect.height) - 0.5;
+      const tiltX = (-pctY * 8).toFixed(2);
+      const tiltY = (pctX * 8).toFixed(2);
+
+      if (frameId) cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(() => {
+        card.style.setProperty('--tilt-x', `${tiltX}deg`);
+        card.style.setProperty('--tilt-y', `${tiltY}deg`);
+      });
+    };
+
+    const resetTilt = () => {
+      if (frameId) cancelAnimationFrame(frameId);
+      card.style.setProperty('--tilt-x', '0deg');
+      card.style.setProperty('--tilt-y', '0deg');
+      rect = null;
+    };
+
+    card.addEventListener('mousemove', updateTilt);
+    card.addEventListener('mouseleave', resetTilt);
+    card.addEventListener('blur', resetTilt);
+  });
+}
+
+/* ── Hero parallax tilt ────────────────────────────────── */
+function initHeroParallax() {
+  const hero = document.getElementById('hero');
+  const heroInner = hero ? hero.querySelector('.hero-inner') : null;
+  if (!hero || !heroInner) return;
+
+  const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!supportsHover || reduceMotion) return;
+
+  let rect = null;
+  let frameId = null;
+
+  const updateTilt = (event) => {
+    if (!rect) rect = hero.getBoundingClientRect();
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const pctX = (x / rect.width) - 0.5;
+    const pctY = (y / rect.height) - 0.5;
+    const tiltX = (-pctY * 6).toFixed(2);
+    const tiltY = (pctX * 6).toFixed(2);
+
+    if (frameId) cancelAnimationFrame(frameId);
+    frameId = requestAnimationFrame(() => {
+      heroInner.style.setProperty('--hero-tilt-x', `${tiltX}deg`);
+      heroInner.style.setProperty('--hero-tilt-y', `${tiltY}deg`);
+    });
+  };
+
+  const resetTilt = () => {
+    if (frameId) cancelAnimationFrame(frameId);
+    heroInner.style.setProperty('--hero-tilt-x', '0deg');
+    heroInner.style.setProperty('--hero-tilt-y', '0deg');
+    rect = null;
+  };
+
+  hero.addEventListener('mousemove', updateTilt);
+  hero.addEventListener('mouseleave', resetTilt);
+}
+
+/* ── Starfield background ──────────────────────────────── */
+function initStarfield() {
+  const canvas = document.getElementById('starfield');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const palette = [
+    [0, 212, 255],
+    [124, 58, 237],
+    [236, 72, 153],
+    [255, 255, 255],
+  ];
+
+  let width = 0;
+  let height = 0;
+  let depth = 0;
+  let stars = [];
+
+  const createStar = () => {
+    const color = palette[Math.floor(Math.random() * palette.length)];
+    return {
+      x: (Math.random() - 0.5) * width,
+      y: (Math.random() - 0.5) * height,
+      z: Math.random() * depth + 1,
+      color,
+    };
+  };
+
+  const resize = () => {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    depth = Math.max(width, height);
+
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.min(1200, Math.floor((width * height) / 7000));
+    stars = Array.from({ length: count }, createStar);
+  };
+
+  const drawStatic = () => {
+    ctx.clearRect(0, 0, width, height);
+    stars.forEach(star => {
+      const x = (star.x / star.z) * depth + width / 2;
+      const y = (star.y / star.z) * depth + height / 2;
+      const size = Math.max(1, 2 * (1 - star.z / depth));
+      const alpha = 0.35;
+      ctx.fillStyle = `rgba(${star.color[0]}, ${star.color[1]}, ${star.color[2]}, ${alpha})`;
+      ctx.fillRect(x, y, size, size);
+    });
+  };
+
+  const animate = () => {
+    const speed = Math.max(1, depth / 1200);
+    ctx.clearRect(0, 0, width, height);
+    ctx.lineWidth = 1;
+    ctx.lineCap = 'round';
+
+    for (let i = 0; i < stars.length; i += 1) {
+      const star = stars[i];
+      const prevZ = star.z;
+      star.z -= speed;
+
+      if (star.z <= 1) {
+        stars[i] = createStar();
+        continue;
+      }
+
+      const x = (star.x / star.z) * depth + width / 2;
+      const y = (star.y / star.z) * depth + height / 2;
+      const prevX = (star.x / prevZ) * depth + width / 2;
+      const prevY = (star.y / prevZ) * depth + height / 2;
+      const alpha = Math.min(1, 0.2 + (1 - star.z / depth) * 1.6);
+
+      ctx.strokeStyle = `rgba(${star.color[0]}, ${star.color[1]}, ${star.color[2]}, ${alpha})`;
+      ctx.beginPath();
+      ctx.moveTo(prevX, prevY);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+
+    requestAnimationFrame(animate);
+  };
+
+  resize();
+
+  if (reduceMotion) {
+    drawStatic();
+  } else {
+    animate();
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    if (reduceMotion) drawStatic();
+  }, { passive: true });
 }
 
 /* ── Navigation ────────────────────────────────────────── */
